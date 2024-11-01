@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Cadastro_de_receitas_Máquina_de_Oleo.Components.EditPartnumber"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cadastro_de_receitas_Máquina_de_Oleo.Components"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+        Background="#323131"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Height="400" Width="900">
+    <materialDesign:Card Margin="10" UniformCornerRadius="15" Background="#FF323232">
+        <Grid Background="#FF323232" Margin="10,0,0,0" VerticalAlignment="Center" Height="340">
+            <Label x:Name="Title" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20" Width="389" Foreground="#FFD7D7D7"/>
+            <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}" 
+                    Margin="10 0 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="40" Click="CloseButton_Click" Background="DarkGray" BorderBrush="DarkGray">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="Close"/>
+                </StackPanel>
+            </Button>
+            <TextBox x:Name="TbPartnumber" VerticalAlignment="Top"
+                PreviewTextInput="NumberValidationTextBox"
+                HorizontalAlignment="Left"
+                Width="184"
+                materialDesign:HintAssist.Hint="Desenho" Margin="20,91,0,0" MaxLength="15" IsUndoEnabled="False" UndoLimit="98"/>
+            <TextBox x:Name="TbDescription" VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="455"
+                materialDesign:HintAssist.Hint="Decrição" Margin="230,91,0,0" MaxLength="50" IsUndoEnabled="False" UndoLimit="98"/>
+            <TextBox x:Name="TbVolume" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Volume" Margin="20,0,750,0" Width="100"
+                PreviewTextInput="Volume_PreviewTextInput" DataObject.Pasting="Volume_Pasting"/>
+            <ComboBox x:Name="CbDosingTime" 
+                ItemsSource="{Binding _dosingTime}"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                materialDesign:HintAssist.Hint="Dosagem" Margin="155,0,615,0" Width="100"/>
+            <ComboBox x:Name="CbTanks"
+                ItemsSource="{Binding _tank}"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                materialDesign:HintAssist.Hint="Associar tanque" Margin="294,0,376,0" Width="200"/>
+            <Button x:Name="BtnSave" Content="Salvar" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" Width="246" Click="BtnSave_Click"/>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>
